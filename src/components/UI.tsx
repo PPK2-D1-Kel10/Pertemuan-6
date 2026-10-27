@@ -7,6 +7,7 @@ import { useDemo } from '@/context/DemoContext';
 import { ds } from '@/styles/dashboard';
 import { glassTheme } from '@/styles/theme';
 import type { PracticalSession } from '@/types';
+import { SessionStatusBadge } from '@/components/SessionStatusBadge';
 
 type IconName = React.ComponentProps<typeof Ionicons>['name'];
 export function Icon({ name, size = 22, color = glassTheme.icon }: { name: IconName; size?: number; color?: string }) {
@@ -91,7 +92,7 @@ export function StatusBadge({ status }: { status: string }) {
 export function SessionCard({ session, onPress }: { session: PracticalSession; onPress?: () => void }) {
   return <Card>
     <View style={ds.sessionHeader}><View style={ds.iconButton}><Icon name="code-slash-outline" /></View><View style={ds.grow}><Text style={ds.cardTitle}>{session.practicalName}</Text><Text style={ds.small}>{session.className}</Text></View></View>
-    <StatusBadge status={session.status} />
+    <SessionStatusBadge status={session.status} />
     <View style={ds.wrap}><View style={ds.row}><Icon name="calendar-outline" size={16} /><Text style={ds.small}>{session.date}</Text></View><View style={ds.row}><Icon name="time-outline" size={16} /><Text style={ds.small}>{session.startTime} - {session.endTime} WIB</Text></View></View>
     {onPress ? <Button label="Lihat detail sesi" onPress={onPress} variant="secondary" /> : null}
   </Card>;

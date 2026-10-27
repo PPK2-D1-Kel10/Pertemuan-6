@@ -1,6 +1,6 @@
 import { SymbolView } from 'expo-symbols';
 import { PropsWithChildren, useState } from 'react';
-import { Pressable, StyleSheet } from 'react-native';
+import { Pressable, StyleSheet, type ViewStyle } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 
 import { ThemedText } from '@/components/themed-text';
@@ -40,7 +40,12 @@ export function Collapsible({ children, title }: PropsWithChildren & { title: st
   );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create<{
+  heading: ViewStyle;
+  pressedHeading: ViewStyle;
+  button: ViewStyle;
+  content: ViewStyle;
+}>({
   heading: {
     flexDirection: 'row',
     alignItems: 'center',

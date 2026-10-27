@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
 import { SymbolView } from 'expo-symbols';
-import { Platform, Pressable, ScrollView, StyleSheet } from 'react-native';
+import { Platform, Pressable, ScrollView, StyleSheet, type ImageStyle, type TextStyle, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { ExternalLink } from '@/components/external-link';
@@ -125,7 +125,19 @@ export default function TabTwoScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create<{
+  scrollView: ViewStyle;
+  contentContainer: ViewStyle;
+  container: ViewStyle;
+  titleContainer: ViewStyle;
+  centerText: TextStyle;
+  pressed: ViewStyle;
+  linkButton: ViewStyle;
+  sectionsWrapper: ViewStyle;
+  collapsibleContent: ViewStyle;
+  imageTutorial: ImageStyle;
+  imageReact: ImageStyle;
+}>({
   scrollView: {
     flex: 1,
   },

@@ -1,7 +1,7 @@
 import { Image } from 'expo-image';
 import * as SplashScreen from 'expo-splash-screen';
 import { useState } from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
+import { Dimensions, StyleSheet, View, type ImageStyle, type ViewStyle } from 'react-native';
 import Animated, { Easing, Keyframe } from 'react-native-reanimated';
 import { scheduleOnRN } from 'react-native-worklets';
 
@@ -110,7 +110,14 @@ export function AnimatedIcon() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create<{
+  imageContainer: ViewStyle;
+  glow: Pick<ImageStyle, 'width' | 'height' | 'position'>;
+  iconContainer: ViewStyle;
+  image: ImageStyle;
+  background: ViewStyle;
+  splashOverlay: ViewStyle;
+}>({
   imageContainer: {
     justifyContent: 'center',
     alignItems: 'center',

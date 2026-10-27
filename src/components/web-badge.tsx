@@ -1,6 +1,6 @@
 import { version } from 'expo/package.json';
 import { Image } from 'expo-image';
-import { useColorScheme, StyleSheet } from 'react-native';
+import { useColorScheme, StyleSheet, type ImageStyle, type TextStyle, type ViewStyle } from 'react-native';
 
 import { ThemedText } from './themed-text';
 import { ThemedView } from './themed-view';
@@ -27,7 +27,11 @@ export function WebBadge() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create<{
+  container: ViewStyle;
+  versionText: TextStyle;
+  badgeImage: ImageStyle;
+}>({
   container: {
     padding: Spacing.five,
     alignItems: 'center',

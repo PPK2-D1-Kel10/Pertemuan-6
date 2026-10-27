@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, type TextStyle, type ViewStyle } from 'react-native';
 
 export default function AppNavigator() {
   return (
@@ -10,7 +10,11 @@ export default function AppNavigator() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create<{
+  container: ViewStyle;
+  title: TextStyle;
+  subtitle: TextStyle;
+}>({
   container: {
     flex: 1,
     justifyContent: 'center',

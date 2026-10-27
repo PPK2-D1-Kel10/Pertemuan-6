@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, type ImageStyle, type ViewStyle } from 'react-native';
 import Animated, { Keyframe, Easing } from 'react-native-reanimated';
 
 import classes from './animated-icon.module.css';
@@ -72,7 +72,14 @@ export function AnimatedIcon() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create<{
+  container: ViewStyle;
+  imageContainer: ViewStyle;
+  glow: Pick<ImageStyle, 'width' | 'height' | 'position'>;
+  iconContainer: ViewStyle;
+  image: ImageStyle;
+  background: ViewStyle;
+}>({
   container: {
     alignItems: 'center',
     width: '100%',

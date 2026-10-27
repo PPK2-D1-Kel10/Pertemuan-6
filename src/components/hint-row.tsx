@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, type ViewStyle } from 'react-native';
 
 import { ThemedText } from './themed-text';
 import { ThemedView } from './themed-view';
@@ -22,7 +22,10 @@ export function HintRow({ title = 'Try editing', hint = 'app/index.tsx' }: HintR
   );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create<{
+  stepRow: ViewStyle;
+  codeSnippet: ViewStyle;
+}>({
   stepRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',

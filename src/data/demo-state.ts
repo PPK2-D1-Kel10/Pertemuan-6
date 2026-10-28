@@ -1,4 +1,5 @@
 import type { AttendanceRecord, PracticalSession, UserRole } from '@/types';
+import { validateAttendance } from '../utils/attendanceValidation';
 
 export type DemoState = {
   username: string;
@@ -33,9 +34,12 @@ export function demoReducer(state: DemoState, action: DemoAction): DemoState {
       };
     }
     case 'attend': {
-      if (!state.username || state.role !== 'Praktikan') return state;
-      if (!state.sessions.some((session) => session.id === action.sessionId && session.status === 'Berlangsung')) return state;
-      if (state.attendance.some((record) => record.sessionId === action.sessionId && record.studentId === state.username)) return state;
+      if (!validateAttendance({
+        studentId: state.username,
+        role: state.role,
+        session: state.sessions.find((session) => session.id === action.sessionId),
+        attendance: state.attendance,
+      }).valid) return state;
       return {
         ...state,
         attendance: [...state.attendance, {
